@@ -4,15 +4,15 @@
   "description": "Following yamalight tutorials",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart":"cross-env NODE_ENV=development",
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./server/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-preset-es2015-node": "^6.1.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.0.5",
     "eslint": "^3.19.0 || ^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -22,6 +22,10 @@
     "tape": "^4.8.0"
   },
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-es2015-node": "^6.1.1",
+    "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.2",
     "express": "^4.15.5",
     "morgan": "^1.9.0",

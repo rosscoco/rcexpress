@@ -4,8 +4,12 @@
     "rules": {
       "object-curly-spacing": ["warn", "never"],
       "func-names": "off",
+      "linebreak-style": "off",
       "space-before-function-paren": ["error", "never"],
-      "max-len": ["error", 120, 4]
+      "max-len": ["error", 300, 4],
+      "spaced-comment":"off",
+      "indent": ["error", 4],
+      "comma-dangle": ["error", "never"]
     }
   }
   
