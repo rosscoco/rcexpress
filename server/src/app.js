@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
 });
 
 //No Path defined - this handler will bne used for all unrouted requests
-app.use((req, res,next) => {
+app.use((req, res, next) => {
     //logger.info(req);
-    res.status(404).send("Not Found " + res);
+    res.status(404).send(`Not Found ${res}`);
 });
 
 //Method signature is used to indicate this handler is for all unhandled exceptions
-app.use((err, req, res,next) => {
+app.use((err, req, res, next) => {
     logger.error(err.stack);
     res.status(500).send(err.stack);
 });

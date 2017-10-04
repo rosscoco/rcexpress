@@ -9,7 +9,10 @@
       "max-len": ["error", 300, 4],
       "spaced-comment":"off",
       "indent": ["error", 4],
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": ["error", "never"],
+      "import/no-unresolved":"off",
+      "import/prefer-default-export":"off",
+      "no-unused-vars": ["error", { "args": "none" }]
     }
   }
   

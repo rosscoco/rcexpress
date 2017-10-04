@@ -1,0 +1,1 @@
+ docker -H "192.168.99.100:2376"    --tlsverify --tlscacert /mnt/c/Users/rossco/.docker/machine/certs/ca.pem --tlscert /mnt/c/Users/rossco/.docker/machine/certs/cert.pem --tlskey /mnt/c/Users/rossco/.docker/machine/certs/key.pem run -d -p 28015:28015 -p 8090:8080  --name expertssdb rethinkdb

@@ -4,10 +4,12 @@
   "description": "Following yamalight tutorials",
   "main": "index.js",
   "scripts": {
-    "prestart":"cross-env NODE_ENV=development",
-    "start": "node server/index.js",
+    "prestart": "cross-env NODE_ENV=development",
+    "start": "node index.js",
+    "db:run": "run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
+    "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./server/"
+    "lint": "eslint ./src/"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +31,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.15.5",
     "morgan": "^1.9.0",
+    "thinky": "^2.3.9",
     "winston": "^2.3.1"
   }
 }
