@@ -3,3 +3,9 @@ export const dbConfig = {
     port: '32769',
     name: 'rethinkdb'
 };
+
+export const auth = {
+    passwordSalt: 'SwjDHsjx7VIDMBafYbD6hAQuaxOO2XPgCYBJYIlXDBlpRJCWszevwaZmMorRKPq1',
+    sessionSecret: 'SwjDHsjx7VIDMBafYbD6hAQuaxOO2XPgCYBJYIlXDBlpRJCWszevwaZmMorRKPq1'
+};
+

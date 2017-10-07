@@ -2,3 +2,5 @@
 require('babel-core/register');
 
 require('./src');
+
+require('./test/auth');

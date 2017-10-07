@@ -5,24 +5,23 @@
   "main": "index.js",
   "scripts": {
     "prestart": "cross-env NODE_ENV=development",
-    "start": "node index.js",
+    "start": "node server/index.js",
     "db:run": "run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
     "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node ./server/test/index.js | tap-spec",
     "lint": "eslint ./src/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "cross-env": "^5.0.5",
     "eslint": "^3.19.0 || ^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "supertest": "^3.0.0",
-    "tape": "^4.8.0"
+    "eslint-plugin-react": "^7.1.0"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -30,8 +29,15 @@
     "babel-preset-es2015-node": "^6.1.1",
     "babel-preset-stage-0": "^6.24.1",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.5",
+    "express-session": "^1.15.6",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "supertest": "^3.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0",
     "thinky": "^2.3.9",
     "winston": "^2.3.1"
   }

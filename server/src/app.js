@@ -2,8 +2,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import passport from 'passport';
+
 //our packages
-import logger from './util';
+import {logger} from './util';
+import {auth as authConfig} from '../config';
+import setupAuthRoutes from './auth';
+
 
 const app = express();
 
@@ -13,10 +20,21 @@ app.use(morgan('combined', {stream: logger.stream}));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));//for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
+app.use(session({
+    secret: authConfig.sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', (req, res) => {
     res.send('Default Route');
 });
+
+setupAuthRoutes(app);
 
 //No Path defined - this handler will bne used for all unrouted requests
 app.use((req, res, next) => {
