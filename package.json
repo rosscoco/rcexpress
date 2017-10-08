@@ -8,13 +8,18 @@
     "start": "node server/index.js",
     "db:run": "run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
     "db:start": "docker run -d -p 28015:28015 -p 8090:8080 -v $PWD/db:/data --name expertsdb rethinkdb",
-    "test": "node ./server/test/index.js | tap-spec",
+    "pretest": "cross-env NODE_ENV=testing",
+    "test": "cross-env NODE_ENV=testing node ./server/test/index.js | tap-spec",
     "lint": "eslint ./src/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-es2015-node": "^6.1.1",
+    "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.5",
     "eslint": "^3.19.0 || ^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -24,10 +29,7 @@
     "eslint-plugin-react": "^7.1.0"
   },
   "dependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.1",
-    "babel-preset-es2015-node": "^6.1.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.5",

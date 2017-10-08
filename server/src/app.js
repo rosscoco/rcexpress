@@ -16,6 +16,7 @@ const app = express();
 
 //morgan is  middleware used for logging server requests.  The write stream 
 //is created in util/logger.js using winston package
+
 app.use(morgan('combined', {stream: logger.stream}));
 
 app.use(bodyParser.json());
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
     //logger.info(req);
     res.status(404).send(`Not Found ${res}`);
 });
+
 
 //Method signature is used to indicate this handler is for all unhandled exceptions
 app.use((err, req, res, next) => {

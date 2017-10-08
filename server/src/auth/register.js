@@ -6,20 +6,24 @@ export default (app) => {
         const {login, password, passwordRepeat} = req.body;
         logger.info('Registering user');
         const hashedPassword = hash(password);
+
         if (password !== passwordRepeat) {
-            logger.info('/api/register::Passwords do not match');
-            res.status(400).send({error: 'Passwords do not match'});
+            res.status(400).send({error: 'Passwords do not match!'});
+            return;
         }
 
-        const user = new User({
+        // const user = new User({
+        //     login,
+        //     password: hashedPassword
+        // });
+
+        User.save({
             login,
             password: hashedPassword
-        });
-
-        user.save().then((result) => {
-            res.status(201);
+        }).then((result) => {
+            res.status(201).send();
         }).error((err) => {
-            logger.error("Error saving user", err);
+            logger.error('Error saving user', err);
             res.status(400).send({error: `DB Create User error: ${err}`});
         });
     });
